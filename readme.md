@@ -17,4 +17,5 @@ Remplaza los ficheros facilitados a continuación por los ya existentes en la ca
 **IMPORTANTE**
 
 Para una correcta integración, deshabilita la opcion de registro del phpbb3
+
 El usuario cambia su clave del juego y email desde el panel del foro
