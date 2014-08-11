@@ -3617,9 +3617,6 @@ function phpbb_get_banned_user_ids($user_ids = array())
 }
 
 
-/******************************************/
-/* SKSERVER INTEGRACIÓN
-/******************************************/
 
 /**
 * Encripta la clave con el algoritmo de skimdoo
@@ -3627,8 +3624,6 @@ function phpbb_get_banned_user_ids($user_ids = array())
 * @param string $UsuarioClave Clave en texto plano
 * @return string Cadena con clave encriptada
 */
-
-
 function skimdoo_cryptkey($UsuarioClave) {
     $salt = substr(hash('whirlpool', uniqid(rand(), true)), 0, 12);
     $hash = hash('whirlpool', $salt . $UsuarioClave);
@@ -3645,7 +3640,7 @@ function skimdoo_cryptkey($UsuarioClave) {
 function skimdoo_setKey($UsuarioClave, $UsuarioNick) {						
 	global $db;
 	
-	$sql = "UPDATE skserver.usuarios SET UsuarioClave = '".skimdoo_cryptkey($UsuarioClave)."' WHERE UsuarioNick = '".$UsuarioNick."'";
+	$sql = "UPDATE ".DB_SERVER.".usuarios SET UsuarioClave = '".skimdoo_cryptkey($UsuarioClave)."' WHERE UsuarioNick = '".$UsuarioNick."'";
 	return $db->sql_query($sql);
 }
 
@@ -3658,7 +3653,7 @@ function skimdoo_setKey($UsuarioClave, $UsuarioNick) {
 function skimdoo_setMail($UsuarioEmail, $UsuarioNick) {						
 	global $db;
 
-	$sql = "UPDATE skserver.usuarios SET UsuarioCorreo = '".$UsuarioEmail."' WHERE UsuarioNick = '".$UsuarioNick."'";
+	$sql = "UPDATE ".DB_SERVER.".usuarios SET UsuarioCorreo = '".$UsuarioEmail."' WHERE UsuarioNick = '".$UsuarioNick."'";
 	return $db->sql_query($sql);
 }
 
